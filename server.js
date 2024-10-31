@@ -51,6 +51,51 @@ app.put('/data/:inorde/:id', async (req, res) => {
     }
 });
 
+app.put('/data', async (req, res) => {
+    const { episodes, title } = req.body;
+
+    try {
+        const result = await pool.query(
+            "INSERT INTO mediadata VALUES ($1, $2, 0, 'images/dodypoper.jpg') RETURNING *",
+            [title, episodes]
+        );
+
+        // Check if any rows were returned and send the appropriate response
+        if (result.rows.length > 0) {
+            res.status(201).json(result.rows[0]); // Return the newly created row
+        } else {
+            res.status(500).json({ error: 'No data was inserted' });
+        }
+    } catch (error) {
+        console.error('Error executing query', error.stack);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+
+app.delete('/data/delete', async (req, res) => { 
+    const { id } = req.body;
+
+    try {
+        if (!id) {
+            return res.status(400).json({ error: 'ID is required' });
+        }
+
+        const result = await pool.query("DELETE FROM mediadata WHERE id = $1", [id]);
+        
+        if (result.rowCount === 0) {
+            return res.status(404).json({ message: 'Record not found' });
+        }
+        
+        res.status(200).json({ message: 'Record deleted successfully' });
+    } catch (error) {
+        console.error('Error executing query', error.stack);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+
+
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });

@@ -8,6 +8,7 @@ body, html {
 body {
     background-color: rgb(255, 234, 211);
     height: 100vh;
+    padding-bottom: 100px;
 }
 
 #title {
@@ -18,7 +19,18 @@ body {
 
 #titlebar {
     background-color: rgb(255, 244, 233);
-    padding: 1em;
+    padding: 0.5em;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 5px rgb(236, 217, 197) outset;
+    border-radius: 50px;
+}
+
+#enternew {
+    position: absolute;
+    left: 30px;
+    bottom: 20px;
 }
 
 .itembox {
@@ -128,7 +140,7 @@ body {
 }
 
 .persistent-animation {
-    animation: gradientAnimation 0.1s ease-out forwards;
+    animation: gradientAnimation 0.2s ease-out forwards;
 }
 
 .lowering_anim {
