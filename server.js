@@ -17,7 +17,7 @@ const pool = new Pool({
 
 app.get('/data', async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM mediadata');
+        const result = await pool.query('SELECT * FROM mediadata ORDER BY id');
         res.json(result.rows);
     } catch (error) {
         console.error('Error executing query', error.stack);
