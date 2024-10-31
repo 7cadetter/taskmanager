@@ -52,7 +52,10 @@ document.body.addEventListener('click', function(event) {
     } else if (event.target.classList.contains('finishbutton')) {
         const parentbox = event.target.closest('.itembox');
 
-        deleteRow(parentbox.id);
+        if (confirm("Are you sure you want to remove " + parentbox.querySelector('.boxtitle').innerText + "?") == true) {
+            deleteRow(parentbox.id);
+        }
+        
     }
 })
 
@@ -77,7 +80,7 @@ addItemButton.addEventListener('click', () => {
     const episodes = parseInt(episodesInput.value);
 
     if (title && episodes > 0) {
-        addRow(title, episodes, '+');
+        addRow(title, episodes);
         
         titleInput.value = '';
         episodesInput.value = '';
@@ -101,7 +104,7 @@ function addRow(title, episodes) {
     })
     .then(response => {
         console.log("Response received:", response);
-        // Check for response status
+
         if (!response.ok) {
             throw new Error('Failed to add data');
         }

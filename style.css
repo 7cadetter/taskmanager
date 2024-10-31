@@ -140,7 +140,7 @@ body {
 }
 
 .persistent-animation {
-    animation: gradientAnimation 0.2s ease-out forwards;
+    animation: gradientAnimation 0.1s ease-out forwards;
 }
 
 .lowering_anim {

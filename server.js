@@ -60,9 +60,8 @@ app.put('/data', async (req, res) => {
             [title, episodes]
         );
 
-        // Check if any rows were returned and send the appropriate response
         if (result.rows.length > 0) {
-            res.status(201).json(result.rows[0]); // Return the newly created row
+            res.status(201).json(result.rows[0]);
         } else {
             res.status(500).json({ error: 'No data was inserted' });
         }
