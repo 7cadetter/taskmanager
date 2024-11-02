@@ -6,7 +6,9 @@ const PORT = process.env.PORT || 3000;
 const path = require('path');
 
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://taskmanager-5si3.onrender.com'
+  }));
 app.use(express.json());
 
 const pool = new Pool({

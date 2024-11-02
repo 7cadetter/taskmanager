@@ -2,7 +2,7 @@ const titleInput = document.getElementById('titleInput');
 const episodesInput = document.getElementById('episodesInput');
 const addItemButton = document.getElementById('addItemButton');
 
-fetch('http://localhost:3000/data')
+fetch('https://taskmanager-5si3.onrender.com/data')
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -59,7 +59,7 @@ document.body.addEventListener('click', function(event) {
 })
 
 function incrementWatched(id, inorde) {
-    fetch(`http://localhost:3000/data/${inorde}/${id}`, {
+    fetch(`https://taskmanager-5si3.onrender.com/data/${inorde}/${id}`, {
         method: 'PUT',
     })
     .then(response => {
@@ -91,7 +91,7 @@ addItemButton.addEventListener('click', () => {
 function addRow(title, episodes) {
     console.log("Adding row with title:", title, "and episodes:", episodes);
 
-    fetch(`http://localhost:3000/data`, {
+    fetch('https://taskmanager-5si3.onrender.com/data', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ function deleteRow(id) {
     console.log("Removing row ID", id);
     const itemBox = document.querySelector(`.itembox[id='${id}']`);
     
-    fetch(`http://localhost:3000/data/delete`, {
+    fetch('https://taskmanager-5si3.onrender.com/data', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
