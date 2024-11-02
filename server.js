@@ -2,7 +2,9 @@ const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const path = require('path');
+
 
 app.use(cors());
 app.use(express.json());
@@ -13,6 +15,12 @@ const pool = new Pool({
     database: 'projectdb',
     password: 'Eggface_1431',
     port: 5432,
+});
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get('/data', async (req, res) => {

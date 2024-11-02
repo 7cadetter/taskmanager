@@ -55,7 +55,6 @@ document.body.addEventListener('click', function(event) {
         if (confirm("Are you sure you want to remove " + parentbox.querySelector('.boxtitle').innerText + "?") == true) {
             deleteRow(parentbox.id);
         }
-        
     }
 })
 
