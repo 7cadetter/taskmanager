@@ -11,6 +11,7 @@ app.use(cors({
   }));
 app.use(express.json());
 
+console.log('Database URL:', process.env.DATABASE_URL);
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false } // Include if connecting securely to an external host
