@@ -12,11 +12,8 @@ app.use(cors({
 app.use(express.json());
 
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'projectdb',
-    password: 'Eggface_1431',
-    port: 5432,
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false } // Include if connecting securely to an external host
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
