@@ -33,6 +33,10 @@ body {
     bottom: 20px;
 }
 
+#titleInput, #episodesInput, #addItemButton {
+    border-radius: 50px;
+}
+
 .itembox {
     margin: auto;
     margin-top: 50px;
